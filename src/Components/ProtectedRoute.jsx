@@ -1,14 +1,28 @@
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import {checkSession} from "../api/api.js"; 
 
 const ProtectedRoute = ({ children }) => {
-    const token = Cookies.get("token"); 
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-    if (!token) {
-        return <Navigate to="/login" />;
+    useEffect(() => {
+        const check = async () => {
+            try {
+                await checkSession();
+                setIsAuthenticated(true);
+            } catch {
+                setIsAuthenticated(false);
+            }
+        };
+
+        check();
+    }, []);
+
+    if (isAuthenticated === null) {
+        return <div>Cargando...</div>; 
     }
 
-    return children;
+    return isAuthenticated ? children : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

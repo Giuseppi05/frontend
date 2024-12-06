@@ -10,6 +10,7 @@ const api = axios.create({
 export const registerApi = user => api.post('/auth/register', user)
 export const loginApi = user => api.post('/auth/login', user)
 export const logoutApi = () => api.post('/auth/logout')
+export const checkSession = () => api.post('/auth/session')
 
 //RESTAURANTES
 export const readAllRestaurants = () => api.get('/restaurant/restaurant')
