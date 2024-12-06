@@ -1,6 +1,13 @@
 {
     "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
+      {
+        "source": "/api/(.*)",
+        "destination": "https://backendmdw.onrender.com/api/$1"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/"
+      }
     ]
   }
   
