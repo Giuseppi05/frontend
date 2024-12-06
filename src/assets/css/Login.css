@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  padding: 20px;
+  background-image: url("/login-background.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.imagen {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
+    animation: rotation 8s infinite alternate;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(20deg);
+    }
+  }
+  

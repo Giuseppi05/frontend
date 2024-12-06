@@ -1,0 +1,45 @@
+:root {
+    --vermilion-50: #fff5ec;
+    --vermilion-100: #ffe9d3;
+    --vermilion-200: #ffcfa5;
+    --vermilion-300: #ffad6d;
+    --vermilion-400: #ff7e32;
+    --vermilion-500: #ff5b0a;
+    --vermilion-600: #ff4000;
+    --vermilion-700: #cc2b02;
+    --vermilion-800: #a1220b;
+    --vermilion-900: #821f0c;
+    --vermilion-950: #460c04;
+}
+
+.customMenu {
+    background-color: var(--vermilion-500) !important;
+    box-shadow: none;
+    height: 100%;
+    color: white;
+}
+
+.customMenu svg{
+    fill: var(--vermilion-100);
+}
+
+.logo:hover{
+    cursor: pointer;
+    filter: none;
+}
+
+.customAppBar{
+    background-color: var(--vermilion-50) !important;
+    box-shadow: none !important;
+    color: #460c04 !important;
+}
+
+.customAppBar svg{
+    fill: var(--vermilion-800);
+}
+
+.customMenu .sub{
+    opacity: 0.8;
+    margin-left: 10px;
+    text-align: start;
+}
