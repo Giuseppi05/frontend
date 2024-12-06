@@ -1,13 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": "https://backendmdw.onrender.com/:path*"
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "destination": "/"
-      
     }
   ]
 }
