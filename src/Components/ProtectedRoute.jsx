@@ -1,60 +1,43 @@
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { checkSession } from "../api/api.js"; 
+import { checkSession } from "../api/api.js";
 
 const ProtectedRoute = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const check = async () => {
+        const verifySession = async () => {
             try {
                 const response = await checkSession();
-                console.log('Session check successful:', response);
-                setIsAuthenticated(true);
+                console.log("Session is valid:", response.data);
+                setIsAuthenticated(true); // Usuario autenticado
             } catch (err) {
-                console.error('Session check failed:', err);
+                console.error("Session verification failed:", err);
+                setIsAuthenticated(false); // Usuario no autenticado
                 
-                // Distinguir entre diferentes tipos de errores
-                if (err.response) {
-                    // El servidor respondió con un error
-                    console.error('Server response error:', err.response.data);
-                    setError(err.response.data.message);
-                } else if (err.request) {
-                    // La solicitud se hizo pero no se recibió respuesta
-                    console.error('No response received');
-                    setError('No se pudo conectar con el servidor');
-                } else {
-                    // Algo sucedió al configurar la solicitud
-                    console.error('Error setting up request', err.message);
-                    setError('Error inesperado');
-                }
-                
-                setIsAuthenticated(false);
+                // Manejo detallado de errores
+                setError(err.response?.data?.message || "Error al verificar la sesión");
             }
         };
 
-        check();
+        verifySession();
     }, []);
 
-    // Estado de carga
     if (isAuthenticated === null) {
-        return <div>Cargando...</div>; 
+        return <div>Cargando...</div>; // Estado de carga
     }
 
-    // Si no está autenticado, muestra un mensaje de error opcional
     if (!isAuthenticated) {
-        console.log('Redirecting due to authentication failure');
         return (
             <>
-                {error && <div className="error-message">{error}</div>}
+                {error && <div style={{ color: "red" }}>{error}</div>}
                 <Navigate to="/login" replace />
             </>
         );
     }
 
-    // Si está autenticado, renderiza los children
-    return children;
+    return children; // Renderiza el contenido protegido
 };
 
 export default ProtectedRoute;
