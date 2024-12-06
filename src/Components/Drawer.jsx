@@ -25,14 +25,16 @@ import UsuariosPage from "../pages/UsuariosPage";
 import OffersPage from "../pages/OffersPage";          
 import Footer from "./Footer";          
 import IncidentsPage from '../pages/IncidentsPage';
+import MatchPage from '../pages/MatchPage'
 
 //Iconos - Imágenes
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import GroupIcon from '@mui/icons-material/Group';
 import logo from "/logo-v2.png";
 import "../assets/css/Drawer.css";
-import { DiscountSharp } from '@mui/icons-material';
+import { DiscountSharp} from '@mui/icons-material';
 import DescriptionIcon from '@mui/icons-material/Description';
+import FavoriteIcon from '@mui/icons-material/favorite'
 
 function ResponsiveDrawer({ setIsLoading }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -97,13 +99,20 @@ function ResponsiveDrawer({ setIsLoading }) {
           </ListItemButton>
         </ListItem>
 
+        <ListItem key={"Matchs"} disablePadding onClick={handleDrawerClose}>
+            <ListItemButton component={Link} to="/match">
+              <ListItemIcon><FavoriteIcon /></ListItemIcon>
+              <ListItemText primary={"Matchs"} />
+            </ListItemButton>
+          </ListItem>
+        </List>
+
         <ListItem key={"Incidencias"} disablePadding onClick={handleDrawerClose}>
           <ListItemButton component={Link} to="/incidents">
             <ListItemIcon><DescriptionIcon /></ListItemIcon>
             <ListItemText primary={"Incidencias"} />
           </ListItemButton>
         </ListItem>
-      </List>
     </div>
   );
 
@@ -164,6 +173,7 @@ function ResponsiveDrawer({ setIsLoading }) {
                   <Route path="/users" element={<UsuariosPage setIsLoading={setIsLoading}/>} />
                   <Route path="/offers" element={<OffersPage setIsLoading={setIsLoading}/>} />
                   <Route path="/incidents" element={<IncidentsPage setIsLoading={setIsLoading}/>} />
+                  <Route path="/match" element={<MatchPage setIsLoading={setIsLoading}/>} />
                   <Route path="*" element={<Navigate to="/dashboard" replace />} />
               </Routes>
               <Footer />

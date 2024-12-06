@@ -19,7 +19,6 @@ import {
 import { 
   Person, 
   Restaurant, 
-  DiscountSharp, 
   TrendingUp, 
   TrendingDown,
   Report
@@ -38,24 +37,7 @@ import {
 } from "../api/api.js"
 import toast from "react-hot-toast";
 
-const restaurantRatings = [
-  { name: '5 estrellas', value: 120 },
-  { name: '4 estrellas', value: 180 },
-  { name: '3 estrellas', value: 60 },
-  { name: '2 estrellas', value: 20 },
-  { name: '1 estrella', value: 10 },
-];
-
-const hourlyActivity = [
-  { hour: '00:00', usuarios: 50 },
-  { hour: '03:00', usuarios: 20 },
-  { hour: '06:00', usuarios: 30 },
-  { hour: '09:00', usuarios: 100 },
-  { hour: '12:00', usuarios: 250 },
-  { hour: '15:00', usuarios: 200 },
-  { hour: '18:00', usuarios: 300 },
-  { hour: '21:00', usuarios: 180 },
-];
+import FavoriteIcon from '@mui/icons-material/favorite'
 
 const FoodMatchDashboard = ({setIsLoading}) => {
   const [stats, setStats] = useState(null);
@@ -313,10 +295,10 @@ const FoodMatchDashboard = ({setIsLoading}) => {
           color="#2196F3" 
         />
         <StatCard 
-          title="Ofertas Registradas" 
-          value={stats.totalOffers || 0} 
-          change={stats.offersChange || 0} 
-          Icon={DiscountSharp} 
+          title="Matchs Realizados" 
+          value={stats.totalMatchs || 0} 
+          change={stats.matchsChange || 0} 
+          Icon={FavoriteIcon} 
           color="#E91E63" 
         />
         <StatCard 

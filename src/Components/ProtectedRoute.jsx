@@ -10,13 +10,10 @@ const ProtectedRoute = ({ children }) => {
         const verifySession = async () => {
             try {
                 const response = await checkSession();
-                console.log("Session is valid:", response.data);
-                setIsAuthenticated(true); // Usuario autenticado
+                setIsAuthenticated(true); 
             } catch (err) {
-                console.error("Session verification failed:", err);
-                setIsAuthenticated(false); // Usuario no autenticado
+                setIsAuthenticated(false);
                 
-                // Manejo detallado de errores
                 setError(err.response?.data?.message || "Error al verificar la sesión");
             }
         };

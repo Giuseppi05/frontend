@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: "https://backendmdw.onrender.com/api",
-    //"http://localhost:3000/api",
+    baseURL: "http://localhost:3000/api",
+    //"https://backendmdw.onrender.com/api",
     withCredentials: true
 })
 
@@ -46,3 +46,10 @@ export const graphicLine = () => api.get(`/graphic/graphicLine`)
 export const graphicBar = () => api.get(`/graphic/graphicBar`)
 export const graphicArea = () => api.get(`/graphic/graphicArea`)
 export const graphicPie = () => api.get(`/graphic/graphicPie`)
+
+//MATCHES
+export const readAllMatchs = () => api.get('/match/match')
+export const readOneMatch = (id) => api.get(`/match/match/${id}`)
+export const createMatch = (match) => api.post('/match/match', match)
+export const updateMatch = (id, match) => api.put(`/match/match/${id}`, match)
+export const deleteMatch = (id) => api.delete(`/match/match/${id}`)
