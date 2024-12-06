@@ -37,7 +37,7 @@ import {
 } from "../api/api.js"
 import toast from "react-hot-toast";
 
-import FavoriteIcon from '@mui/icons-material/favorite'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 const FoodMatchDashboard = ({setIsLoading}) => {
   const [stats, setStats] = useState(null);

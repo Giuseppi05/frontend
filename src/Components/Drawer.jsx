@@ -34,7 +34,7 @@ import logo from "/logo-v2.png";
 import "../assets/css/Drawer.css";
 import { DiscountSharp} from '@mui/icons-material';
 import DescriptionIcon from '@mui/icons-material/Description';
-import FavoriteIcon from '@mui/icons-material/favorite'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 function ResponsiveDrawer({ setIsLoading }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
