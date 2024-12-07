@@ -35,7 +35,8 @@ import { DiscountSharp} from '@mui/icons-material';
 import DescriptionIcon from '@mui/icons-material/Description';
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
-import {useState, useEffect, useNavigate} from "react"
+import {useState, useEffect} from "react"
+import {useNavigate} from "react-router-dom"
 import { checkSession } from "../api/api.js";
  
 function ResponsiveDrawer({ setIsLoading }) {
@@ -54,7 +55,7 @@ function ResponsiveDrawer({ setIsLoading }) {
         }
     };
     verifiedLog()
-}, [navigate]);
+  }, [navigate]);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
