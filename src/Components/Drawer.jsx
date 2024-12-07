@@ -1,5 +1,4 @@
 //Componentes nativos
-import * as React from 'react';
 import PropTypes from 'prop-types';
 import {  Routes, Route, Link, Navigate } from 'react-router-dom';
 
@@ -36,10 +35,23 @@ import { DiscountSharp} from '@mui/icons-material';
 import DescriptionIcon from '@mui/icons-material/Description';
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
+import {useState, useEffect} from "react"
+import { checkSession } from "../api/api.js";
+ 
 function ResponsiveDrawer({ setIsLoading }) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isClosing, setIsClosing] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const drawerWidth = 240;
+
+  useEffect(() => {
+      async function verifiedLog() {
+          const res = await checkSession(); 
+          if (res.status===401) {
+              navigate("/login")
+          }
+      }
+      verifiedLog()
+  }, []);
 
   const handleDrawerClose = () => {
     setIsClosing(true);

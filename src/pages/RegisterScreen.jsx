@@ -3,8 +3,8 @@ import Typography from "@mui/material/Typography";
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import RegisterForm from "../Components/RegisterForm";
 import "../assets/css/Login.css";
+import { checkSession } from "../api/api.js";
 
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import {useEffect} from "react"
 
@@ -12,9 +12,9 @@ function RegisterScreen({ setIsLoading }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        function verifiedLog() {
-            const token = Cookies.get("token"); 
-            if (token) {
+        async function verifiedLog() {
+            const res = await checkSession(); 
+            if (res.status===200) {
                 navigate("/dashboard")
             }
         }

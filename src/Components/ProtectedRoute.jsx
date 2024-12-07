@@ -22,7 +22,7 @@ const ProtectedRoute = ({ children }) => {
     }, []);
 
     if (isAuthenticated === null) {
-        return <div>Cargando...</div>; // Estado de carga
+        return <div>Cargando...</div>;
     }
 
     if (!isAuthenticated) {
@@ -34,7 +34,7 @@ const ProtectedRoute = ({ children }) => {
         );
     }
 
-    return children; // Renderiza el contenido protegido
+    return children; 
 };
 
 export default ProtectedRoute;
