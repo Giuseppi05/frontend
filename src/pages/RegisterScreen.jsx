@@ -12,14 +12,16 @@ function RegisterScreen({ setIsLoading }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        async function verifiedLog() {
-            const res = await checkSession(); 
-            if (res.status===200) {
-                navigate("/dashboard")
+        const verifiedLog = async () => {
+            try {
+                await checkSession();
+                navigate("/dashboard");
+            } catch (error) {
+                console.log("No hay sesión activa");
             }
-        }
+        };
         verifiedLog()
-    }, []);
+    }, [navigate]);
 
     return (
         <Box

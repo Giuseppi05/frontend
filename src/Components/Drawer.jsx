@@ -44,14 +44,16 @@ function ResponsiveDrawer({ setIsLoading }) {
   const drawerWidth = 240;
 
   useEffect(() => {
-      async function verifiedLog() {
-          const res = await checkSession(); 
-          if (res.status===401) {
-              navigate("/login")
-          }
-      }
-      verifiedLog()
-  }, []);
+    const verifiedLog = async () => {
+        try {
+            await checkSession();
+        } catch (error) {
+            console.log("No hay sesión activa");
+            navigate("/login");
+        }
+    };
+    verifiedLog()
+}, [navigate]);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
