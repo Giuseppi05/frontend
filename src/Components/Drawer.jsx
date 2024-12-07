@@ -35,13 +35,14 @@ import { DiscountSharp} from '@mui/icons-material';
 import DescriptionIcon from '@mui/icons-material/Description';
 import FavoriteIcon from '@mui/icons-material/Favorite'
 
-import {useState, useEffect} from "react"
+import {useState, useEffect, useNavigate} from "react"
 import { checkSession } from "../api/api.js";
  
 function ResponsiveDrawer({ setIsLoading }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const drawerWidth = 240;
+  const navigate = useNavigate()
 
   useEffect(() => {
     const verifiedLog = async () => {
