@@ -21,7 +21,7 @@ function App() {
                 <Route
                     path="/*" 
                     element={
-                        <ProtectedRoute>
+                        <ProtectedRoute setIsLoading={setIsLoading}> 
                             <ResponsiveDrawer setIsLoading={setIsLoading} />
                         </ProtectedRoute>
                     }

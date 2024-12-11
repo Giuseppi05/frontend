@@ -155,6 +155,7 @@ const OffersPage = ({setIsLoading}) => {
 
   //CARGAR LA TABLA
   const loadOffers = async () => {
+    setIsLoading(true)
     try {
       const res = await readAllOffers();
       setOffers(res.data);
@@ -169,6 +170,8 @@ const OffersPage = ({setIsLoading}) => {
           color: "#fff",
         },
       });
+    } finally{
+      setIsLoading(false)
     }
   };
 

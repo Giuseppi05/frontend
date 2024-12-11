@@ -125,6 +125,7 @@ const IncidentsPage = ({setIsLoading}) => {
 
   //CARGAR LA TABLA
   const loadIncidents = async () => {
+    setIsLoading(true)
     try {
       const res = await readAllIncidents();
       setIncidents(res.data);
@@ -139,6 +140,8 @@ const IncidentsPage = ({setIsLoading}) => {
           color: "#fff",
         },
       });
+    } finally{
+      setIsLoading(false)
     }
   };
 

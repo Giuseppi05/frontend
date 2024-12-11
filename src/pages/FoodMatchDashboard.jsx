@@ -302,7 +302,7 @@ const FoodMatchDashboard = ({setIsLoading}) => {
           color="#E91E63" 
         />
         <StatCard 
-          title="Incidencias Registradas" 
+          title="Incidencias Registradas este mes" 
           value={stats.totalIncidents || 0} 
           change={stats.incidentsChange || 0} 
           Icon={Report} 

@@ -133,6 +133,7 @@ const UsuariosPage = ({setIsLoading}) => {
 
   //CARGAR LA TABLA
   const loadUsers = async () => {
+    setIsLoading(true)
     try {
       const res = await readAllUsers();
       setUsers(res.data);
@@ -147,6 +148,8 @@ const UsuariosPage = ({setIsLoading}) => {
           color: "#fff",
         },
       });
+    } finally {
+      setIsLoading(false)
     }
   };
 

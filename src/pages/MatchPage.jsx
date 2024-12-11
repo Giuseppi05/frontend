@@ -126,6 +126,7 @@ const MatchPage = ({setIsLoading}) => {
 
   //CARGAR LA TABLA
   const loadMatchs = async () => {
+    setIsLoading(true)
     try {
       const res = await readAllMatchs();
       setMatchs(res.data);
@@ -140,6 +141,8 @@ const MatchPage = ({setIsLoading}) => {
           color: "#fff",
         },
       });
+    } finally{
+      setIsLoading(false)
     }
   };
 

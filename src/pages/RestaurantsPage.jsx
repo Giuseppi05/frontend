@@ -146,6 +146,7 @@ const RestaurantsPage = ({setIsLoading}) => {
 
   //CARGAR LA TABLA
   const loadRestaurants = async () => {
+    setIsLoading(true)
     try {
       const res = await readAllRestaurants();
       setRestaurants(res.data);
@@ -160,6 +161,8 @@ const RestaurantsPage = ({setIsLoading}) => {
           color: "#fff",
         },
       });
+    } finally{
+      setIsLoading(false)
     }
   };
 
